@@ -9,17 +9,18 @@
 /* Begin PBXBuildFile section */
 		E927B3722BCAC99E006545A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E927B3712BCAC99E006545A0 /* AppDelegate.swift */; };
 		E927B3742BCAC99E006545A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E927B3732BCAC99E006545A0 /* SceneDelegate.swift */; };
-		E927B3762BCAC99E006545A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E927B3752BCAC99E006545A0 /* ViewController.swift */; };
+		E927B3762BCAC99E006545A0 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E927B3752BCAC99E006545A0 /* FirstViewController.swift */; };
 		E927B3792BCAC99E006545A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E927B3772BCAC99E006545A0 /* Main.storyboard */; };
 		E927B37B2BCAC99F006545A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E927B37A2BCAC99F006545A0 /* Assets.xcassets */; };
 		E927B37E2BCAC99F006545A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E927B37C2BCAC99F006545A0 /* LaunchScreen.storyboard */; };
+		E927B3872BCACAA9006545A0 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = E927B3862BCACAA9006545A0 /* ComposableArchitecture */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E927B36E2BCAC99E006545A0 /* UIKitPlayground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKitPlayground.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E927B3712BCAC99E006545A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E927B3732BCAC99E006545A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E927B3752BCAC99E006545A0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E927B3752BCAC99E006545A0 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		E927B3782BCAC99E006545A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E927B37A2BCAC99F006545A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E927B37D2BCAC99F006545A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -31,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E927B3872BCACAA9006545A0 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,7 +60,7 @@
 			children = (
 				E927B3712BCAC99E006545A0 /* AppDelegate.swift */,
 				E927B3732BCAC99E006545A0 /* SceneDelegate.swift */,
-				E927B3752BCAC99E006545A0 /* ViewController.swift */,
+				E927B3752BCAC99E006545A0 /* FirstViewController.swift */,
 				E927B3772BCAC99E006545A0 /* Main.storyboard */,
 				E927B37A2BCAC99F006545A0 /* Assets.xcassets */,
 				E927B37C2BCAC99F006545A0 /* LaunchScreen.storyboard */,
@@ -83,6 +85,9 @@
 			dependencies = (
 			);
 			name = UIKitPlayground;
+			packageProductDependencies = (
+				E927B3862BCACAA9006545A0 /* ComposableArchitecture */,
+			);
 			productName = UIKitPlayground;
 			productReference = E927B36E2BCAC99E006545A0 /* UIKitPlayground.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +116,9 @@
 				Base,
 			);
 			mainGroup = E927B3652BCAC99E006545A0;
+			packageReferences = (
+				E927B3852BCACAA9006545A0 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			productRefGroup = E927B36F2BCAC99E006545A0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,7 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E927B3762BCAC99E006545A0 /* ViewController.swift in Sources */,
+				E927B3762BCAC99E006545A0 /* FirstViewController.swift in Sources */,
 				E927B3722BCAC99E006545A0 /* AppDelegate.swift in Sources */,
 				E927B3742BCAC99E006545A0 /* SceneDelegate.swift in Sources */,
 			);
@@ -361,6 +369,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E927B3852BCACAA9006545A0 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:pointfreeco/swift-composable-architecture.git";
+			requirement = {
+				kind = exactVersion;
+				version = 1.9.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E927B3862BCACAA9006545A0 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E927B3852BCACAA9006545A0 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E927B3662BCAC99E006545A0 /* Project object */;
 }
