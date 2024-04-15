@@ -14,6 +14,7 @@ struct First {
     enum Destination {
         case navigation(Second)
         case fullScreen(Second)
+        case oldView(ThirdDelegate)
     }
 
     @ObservableState
@@ -24,6 +25,7 @@ struct First {
     enum Action {
         case navigationButtonPressed
         case fullScreenButtonPressed
+        case oldButtonPressed
         case destinationDismissed
         case destination(PresentationAction<Destination.Action>)
     }
@@ -36,6 +38,9 @@ struct First {
                 return .none
             case .fullScreenButtonPressed:
                 state.destination = .fullScreen(.init())
+                return .none
+            case .oldButtonPressed:
+                state.destination = .oldView(.init())
                 return .none
             case .destinationDismissed:
                 state.destination = nil
@@ -52,6 +57,9 @@ struct First {
                     state.destination = nil
                     return .none
                 }
+            case .destination(.presented(.oldView(.buttonPressed))):
+                state.destination = nil
+                return .none
             case .destination:
                 return .none
             }
@@ -85,6 +93,13 @@ final class FirstViewController: UIViewController {
                     let vc = SecondViewController(store: store)
                     vc.modalPresentationStyle = .fullScreen
                     present(vc, animated: true)
+                case .oldView(let store):
+                    let storyboard = UIStoryboard(name: "ThirdViewController", bundle: .main)
+                    let vc = storyboard.instantiateInitialViewController { coder in
+                        ThirdViewController(coder: coder, store: store)
+                    }!
+                    vc.modalPresentationStyle = .fullScreen
+                    present(vc, animated: true)
                 }
                 destination = store.case
             } else if let destination {
@@ -92,6 +107,8 @@ final class FirstViewController: UIViewController {
                 case .navigation:
                     navigationController?.popToViewController(self, animated: true)
                 case .fullScreen:
+                    dismiss(animated: true)
+                case .oldView:
                     dismiss(animated: true)
                 }
                 self.destination = nil
@@ -112,6 +129,10 @@ final class FirstViewController: UIViewController {
     
     @IBAction private func fullScreenButtonPressed(_ sender: Any) {
         store.send(.fullScreenButtonPressed)
+    }
+    
+    @IBAction private func oldButtonPressed(_ sender: Any) {
+        store.send(.oldButtonPressed)
     }
 }
 

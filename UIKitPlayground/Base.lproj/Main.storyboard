@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="G0x-WE-BF0">
-                                <rect key="frame" x="142.33333333333334" y="410.33333333333331" width="108.33333333333334" height="100.66666666666669"/>
+                                <rect key="frame" x="142.33333333333334" y="377" width="108.33333333333334" height="167"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="juD-94-QbH">
                                         <rect key="frame" x="0.0" y="0.0" width="108.33333333333333" height="34.333333333333336"/>
@@ -28,11 +28,19 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HmA-ab-NXV">
-                                        <rect key="frame" x="0.0" y="66.333333333333371" width="108.33333333333333" height="34.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="66.333333333333314" width="108.33333333333333" height="34.333333333333343"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Full Screen"/>
                                         <connections>
                                             <action selector="fullScreenButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8QJ-Tg-nj2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NLK-c2-F7i">
+                                        <rect key="frame" x="0.0" y="132.66666666666669" width="108.33333333333333" height="34.333333333333343"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Old"/>
+                                        <connections>
+                                            <action selector="oldButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LNx-YG-wAO"/>
                                         </connections>
                                     </button>
                                 </subviews>

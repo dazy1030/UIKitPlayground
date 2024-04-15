@@ -47,6 +47,10 @@ struct SecondScreen: View {
         Button("Button") {
             store.send(.view(.buttonPressed))
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background {
+            Color.green
+        }
     }
 }
 
@@ -57,5 +61,10 @@ final class SecondViewController: UIHostingController<SecondScreen> {
     
     @MainActor required dynamic init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "Second"
     }
 }
