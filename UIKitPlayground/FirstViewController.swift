@@ -10,52 +10,51 @@ import UIKit
 
 @Reducer
 struct First {
+    @Reducer(state: .equatable)
+    enum Destination {
+        case second(Second)
+        case third(Third)
+    }
+    
     @ObservableState
     struct State: Equatable {
-        @Presents var second: Second.State?
-        @Presents var third: Third.State?
+        @Presents var destination: Destination.State?
     }
     
     enum Action {
         case secondButtonPressed
         case thirdButtonPressed
         case someViewDismissed
-        case second(PresentationAction<Second.Action>)
-        case third(PresentationAction<Third.Action>)
+        case destination(PresentationAction<Destination.Action>)
     }
     
     var body: some ReducerOf<First> {
         Reduce<State, Action> { (state: inout State, action: Action) in
             switch action {
             case .secondButtonPressed:
-                state.second = .init()
+                state.destination = .second(Second.State())
                 return .none
             case .thirdButtonPressed:
-                state.third = .init()
+                state.destination = .third(Third.State())
                 return .none
             case .someViewDismissed:
-                state.second = nil
-                state.third = nil
+                state.destination = nil
                 return .none
-            case .second:
-                return .none
-            case .third:
+            case .destination:
                 return .none
             }
         }
-        .ifLet(\.$second, action: \.second) {
-            Second()
-        }
-        .ifLet(\.$third, action: \.third) {
-            Third()
-        }
+        .ifLet(\.$destination, action: \.destination)
     }
 }
 
 final class FirstViewController: UIViewController {
     let store: StoreOf<First> = .init(initialState: .init()) {
         First()
+            ._printChanges()
     }
+    
+    private var destinationVC: UIViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,19 +63,25 @@ final class FirstViewController: UIViewController {
         
         observe { [weak self] in
             guard let self else { return }
-            // Second
-            if let store = store.scope(state: \.second, action: \.second.presented) {
-                let vc = SecondViewController(store: store)
-                navigationController?.pushViewController(vc, animated: true)
-            } else {
+            
+            if let store = store.scope(state: \.destination, action: \.destination.presented) {
+                switch store.case {
+                case .second(let store):
+                    let vc = SecondViewController(store: store)
+                    destinationVC = vc
+                    navigationController?.pushViewController(vc, animated: true)
+                case .third(let store):
+                    let vc = ThirdViewController(store: store)
+                    destinationVC = vc
+                    navigationController?.pushViewController(vc, animated: true)
+                }
+            } else if destinationVC is SecondViewController {
                 navigationController?.popToViewController(self, animated: true)
-            }
-            // Third
-            if let store = store.scope(state: \.third, action: \.third.presented) {
-                let vc = ThirdViewController(store: store)
-                navigationController?.pushViewController(vc, animated: true)
-            } else {
+                destinationVC = nil
+            } else if destinationVC is ThirdViewController {
+                // cannot be integrated due to the possibility of modal transitions.
                 navigationController?.popToViewController(self, animated: true)
+                destinationVC = nil
             }
         }
     }
@@ -84,7 +89,7 @@ final class FirstViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // Handle pop event
-        if !isMovingToParent {
+        if !isMovingToParent && store.destination != nil {
             store.send(.someViewDismissed)
         }
     }
