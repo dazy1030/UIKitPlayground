@@ -12,34 +12,46 @@ import UIKit
 struct First {
     @Reducer(state: .equatable)
     enum Destination {
-        case second(Second)
-        case third(Third)
+        case navigation(Second)
+        case fullScreen(Second)
     }
-    
+
     @ObservableState
     struct State: Equatable {
         @Presents var destination: Destination.State?
     }
     
     enum Action {
-        case secondButtonPressed
-        case thirdButtonPressed
-        case someViewDismissed
+        case navigationButtonPressed
+        case fullScreenButtonPressed
+        case destinationDismissed
         case destination(PresentationAction<Destination.Action>)
     }
     
     var body: some ReducerOf<First> {
-        Reduce<State, Action> { (state: inout State, action: Action) in
+        Reduce<State, Action> { state, action in
             switch action {
-            case .secondButtonPressed:
-                state.destination = .second(Second.State())
+            case .navigationButtonPressed:
+                state.destination = .navigation(.init())
                 return .none
-            case .thirdButtonPressed:
-                state.destination = .third(Third.State())
+            case .fullScreenButtonPressed:
+                state.destination = .fullScreen(.init())
                 return .none
-            case .someViewDismissed:
+            case .destinationDismissed:
                 state.destination = nil
                 return .none
+            case .destination(.presented(.navigation(.delegate(let action)))):
+                switch action {
+                case .buttonPressed:
+                    state.destination = nil
+                    return .none
+                }
+            case .destination(.presented(.fullScreen(.delegate(let action)))):
+                switch action {
+                case .buttonPressed:
+                    state.destination = nil
+                    return .none
+                }
             case .destination:
                 return .none
             }
@@ -54,7 +66,7 @@ final class FirstViewController: UIViewController {
             ._printChanges()
     }
     
-    private var destinationVC: UIViewController?
+    private var destination: First.Destination.CaseScope?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,40 +78,40 @@ final class FirstViewController: UIViewController {
             
             if let store = store.scope(state: \.destination, action: \.destination.presented) {
                 switch store.case {
-                case .second(let store):
+                case .navigation(let store):
                     let vc = SecondViewController(store: store)
-                    destinationVC = vc
                     navigationController?.pushViewController(vc, animated: true)
-                case .third(let store):
-                    let vc = ThirdViewController(store: store)
-                    destinationVC = vc
-                    navigationController?.pushViewController(vc, animated: true)
+                case .fullScreen(let store):
+                    let vc = SecondViewController(store: store)
+                    vc.modalPresentationStyle = .fullScreen
+                    present(vc, animated: true)
                 }
-            } else if destinationVC is SecondViewController {
-                navigationController?.popToViewController(self, animated: true)
-                destinationVC = nil
-            } else if destinationVC is ThirdViewController {
-                // cannot be integrated due to the possibility of modal transitions.
-                navigationController?.popToViewController(self, animated: true)
-                destinationVC = nil
+                destination = store.case
+            } else if let destination {
+                switch destination {
+                case .navigation:
+                    navigationController?.popToViewController(self, animated: true)
+                case .fullScreen:
+                    dismiss(animated: true)
+                }
+                self.destination = nil
             }
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        // Handle pop event
         if !isMovingToParent && store.destination != nil {
-            store.send(.someViewDismissed)
+            store.send(.destinationDismissed)
         }
     }
     
-    @IBAction private func secondButtonPressed(_ sender: Any) {
-        store.send(.secondButtonPressed)
+    @IBAction private func navigationButtonPressed(_ sender: Any) {
+        store.send(.navigationButtonPressed)
     }
     
-    @IBAction private func thirdButtonPressed(_ sender: Any) {
-        store.send(.thirdButtonPressed)
+    @IBAction private func fullScreenButtonPressed(_ sender: Any) {
+        store.send(.fullScreenButtonPressed)
     }
 }
 
