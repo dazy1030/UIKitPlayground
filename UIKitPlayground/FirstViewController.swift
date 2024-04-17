@@ -14,7 +14,7 @@ struct First {
     enum Destination {
         case navigation(Second)
         case fullScreen(Second)
-        case oldView(ThirdDelegate)
+        case oldView(Third)
     }
 
     @ObservableState
@@ -57,7 +57,7 @@ struct First {
                     state.destination = nil
                     return .none
                 }
-            case .destination(.presented(.oldView(.buttonPressed))):
+            case .destination(.presented(.oldView(.delegate(.buttonPressed)))):
                 state.destination = nil
                 return .none
             case .destination:
