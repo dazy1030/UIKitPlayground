@@ -15,6 +15,18 @@ struct First {
         case navigation(Second)
         case fullScreen(Second)
         case oldView(Third)
+        case actionSheet(ConfirmationDialogState<ActionSheetAction>)
+        case alert(AlertState<AlertAction>)
+    }
+    
+    @CasePathable
+    enum ActionSheetAction {
+        case dismiss
+    }
+    
+    @CasePathable
+    enum AlertAction {
+        case dismiss
     }
 
     @ObservableState
@@ -26,7 +38,8 @@ struct First {
         case navigationButtonPressed
         case fullScreenButtonPressed
         case oldButtonPressed
-        case destinationDismissed
+        case actionSheetButtonPressed
+        case alertButtonPressed
         case destination(PresentationAction<Destination.Action>)
     }
     
@@ -42,8 +55,44 @@ struct First {
             case .oldButtonPressed:
                 state.destination = .oldView(.init())
                 return .none
-            case .destinationDismissed:
-                state.destination = nil
+            case .actionSheetButtonPressed:
+                state.destination = .actionSheet(
+                    ConfirmationDialogState<ActionSheetAction>(
+                        titleVisibility: .visible,
+                        title: { TextState("タイトル")},
+                        actions: {
+                            ButtonState(action: .dismiss) {
+                                TextState("閉じる")
+                            }
+                            ButtonState(role: .cancel) {
+                                TextState("キャンセル")
+                            }
+                        },
+                        message: {
+                            TextState("メッセージ")
+                        }
+                    )
+                )
+                return .none
+            case .alertButtonPressed:
+                state.destination = .alert(
+                    AlertState<AlertAction>(
+                        title: {
+                            TextState("Title")
+                        },
+                        actions: {
+                            ButtonState(action: .dismiss) {
+                                TextState("Dismiss")
+                            }
+                            ButtonState(role: .cancel) {
+                                TextState("Cancel")
+                            }
+                        },
+                        message: {
+                            TextState("Message")
+                        }
+                    )
+                )
                 return .none
             case .destination(.presented(.navigation(.delegate(let action)))):
                 switch action {
@@ -58,6 +107,15 @@ struct First {
                     return .none
                 }
             case .destination(.presented(.oldView(.delegate(.buttonPressed)))):
+                state.destination = nil
+                return .none
+            case .destination(.presented(.actionSheet(.dismiss))):
+                state.destination = nil
+                return .none
+            case .destination(.presented(.alert(.dismiss))):
+                state.destination = nil
+                return .none
+            case .destination(.dismiss):
                 state.destination = nil
                 return .none
             case .destination:
@@ -94,6 +152,8 @@ struct FirstScreen: View {
             Color.red
                 .ignoresSafeArea(edges: .bottom)
         }
+        .confirmationDialog($store.scope(state: \.destination?.actionSheet, action: \.destination.actionSheet))
+        .alert($store.scope(state: \.destination?.alert, action: \.destination.alert))
     }
 }
 
@@ -137,16 +197,18 @@ final class FirstViewController: UIHostingController<FirstScreen> {
                     }!
                     vc.modalPresentationStyle = .fullScreen
                     present(vc, animated: true)
+                default:
+                    break
                 }
                 destination = store.case
             } else if let destination {
                 switch destination {
                 case .navigation:
                     navigationController?.popToViewController(self, animated: true)
-                case .fullScreen:
+                case .fullScreen, .oldView:
                     dismiss(animated: true)
-                case .oldView:
-                    dismiss(animated: true)
+                default:
+                    break
                 }
                 self.destination = nil
             }
