@@ -6,7 +6,7 @@
 //
 
 import ComposableArchitecture
-import UIKit
+import SwiftUI
 
 @Reducer
 struct First {
@@ -68,23 +68,60 @@ struct First {
     }
 }
 
-final class FirstViewController: UIViewController {
-    let store: StoreOf<First> = .init(initialState: .init()) {
-        First()
-            ._printChanges()
+struct FirstScreen: View {
+    @Bindable var store: StoreOf<First>
+    
+    var body: some View {
+        VStack {
+            Button("Navigation") {
+                store.send(.navigationButtonPressed)
+            }
+            Button("Full Screen") {
+                store.send(.fullScreenButtonPressed)
+            }
+            Button("Old") {
+                store.send(.oldButtonPressed)
+            }
+            Button("Action Sheet") {
+                store.send(.actionSheetButtonPressed)
+            }
+            Button("Alert") {
+                store.send(.alertButtonPressed)
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background { 
+            Color.red
+                .ignoresSafeArea(edges: .bottom)
+        }
+    }
+}
+
+final class FirstViewController: UIHostingController<FirstScreen> {
+    private var destination: First.Destination.CaseScope?
+    
+    init() {
+        super.init(
+            rootView: FirstScreen(
+                store: .init(initialState: First.State()) {
+                    First()._printChanges()
+                }
+            )
+        )
     }
     
-    private var destination: First.Destination.CaseScope?
-
+    @MainActor required dynamic init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "First"
-        view.backgroundColor = .red
         
         observe { [weak self] in
             guard let self else { return }
             
-            if let store = store.scope(state: \.destination, action: \.destination.presented) {
+            if let store = rootView.store.scope(state: \.destination, action: \.destination.presented) {
                 switch store.case {
                 case .navigation(let store):
                     let vc = SecondViewController(store: store)
@@ -118,21 +155,9 @@ final class FirstViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if !isMovingToParent && store.destination != nil {
-            store.send(.destinationDismissed)
+        if !isMovingToParent && rootView.store.destination != nil {
+            rootView.store.send(.destination(.dismiss))
         }
-    }
-    
-    @IBAction private func navigationButtonPressed(_ sender: Any) {
-        store.send(.navigationButtonPressed)
-    }
-    
-    @IBAction private func fullScreenButtonPressed(_ sender: Any) {
-        store.send(.fullScreenButtonPressed)
-    }
-    
-    @IBAction private func oldButtonPressed(_ sender: Any) {
-        store.send(.oldButtonPressed)
     }
 }
 
