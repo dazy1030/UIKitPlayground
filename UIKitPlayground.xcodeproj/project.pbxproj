@@ -368,6 +368,9 @@
 				Base,
 			);
 			mainGroup = E927B3652BCAC99E006545A0;
+			packageReferences = (
+				E9C386632C0EE32C001D0902 /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = E927B36F2BCAC99E006545A0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -922,6 +925,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E9C386632C0EE32C001D0902 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = E927B3662BCAC99E006545A0 /* Project object */;
 }
