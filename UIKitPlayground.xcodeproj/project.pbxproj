@@ -26,6 +26,21 @@
 		E9C386552C0EE00E001D0902 /* SharedModule.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E9C386272C0EDFD1001D0902 /* SharedModule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E9C386592C0EE014001D0902 /* SharedModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9C386272C0EDFD1001D0902 /* SharedModule.framework */; };
 		E9C3865A2C0EE014001D0902 /* SharedModule.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E9C386272C0EDFD1001D0902 /* SharedModule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E9C386652C0EE361001D0902 /* RxSwift-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = E9C386642C0EE361001D0902 /* RxSwift-Dynamic */; };
+		E9C386662C0EE361001D0902 /* RxSwift-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = E9C386642C0EE361001D0902 /* RxSwift-Dynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		E9C386692C0EE371001D0902 /* RxUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C386682C0EE371001D0902 /* RxUtilities.swift */; };
+		E9C3866B2C0EE442001D0902 /* FeatureAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C3866A2C0EE442001D0902 /* FeatureAViewController.swift */; };
+		E9C3866D2C0EE4E2001D0902 /* RxRelay-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = E9C3866C2C0EE4E2001D0902 /* RxRelay-Dynamic */; };
+		E9C3866E2C0EE4E2001D0902 /* RxRelay-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = E9C3866C2C0EE4E2001D0902 /* RxRelay-Dynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		E9C386702C0EE534001D0902 /* FeatureBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C3866F2C0EE534001D0902 /* FeatureBViewController.swift */; };
+		E9C386782C0EEA5D001D0902 /* RxSwift-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = E9C386772C0EEA5D001D0902 /* RxSwift-Dynamic */; };
+		E9C386792C0EEA5D001D0902 /* RxSwift-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = E9C386772C0EEA5D001D0902 /* RxSwift-Dynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		E9C3867B2C0EEA63001D0902 /* RxRelay-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = E9C3867A2C0EEA63001D0902 /* RxRelay-Dynamic */; };
+		E9C3867C2C0EEA63001D0902 /* RxRelay-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = E9C3867A2C0EEA63001D0902 /* RxRelay-Dynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		E9C3867E2C0EEA6C001D0902 /* RxRelay-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = E9C3867D2C0EEA6C001D0902 /* RxRelay-Dynamic */; };
+		E9C3867F2C0EEA6C001D0902 /* RxRelay-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = E9C3867D2C0EEA6C001D0902 /* RxRelay-Dynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		E9C386812C0EEA6F001D0902 /* RxSwift-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = E9C386802C0EEA6F001D0902 /* RxSwift-Dynamic */; };
+		E9C386822C0EEA6F001D0902 /* RxSwift-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = E9C386802C0EEA6F001D0902 /* RxSwift-Dynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +88,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				E9C3867F2C0EEA6C001D0902 /* RxRelay-Dynamic in Embed Frameworks */,
+				E9C386822C0EEA6F001D0902 /* RxSwift-Dynamic in Embed Frameworks */,
 				E9C3862E2C0EDFD1001D0902 /* SharedModule.framework in Embed Frameworks */,
 				E9C3864F2C0EDFE9001D0902 /* FeatureBModule.framework in Embed Frameworks */,
 				E9C3863F2C0EDFE1001D0902 /* FeatureAModule.framework in Embed Frameworks */,
@@ -86,6 +103,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				E9C386792C0EEA5D001D0902 /* RxSwift-Dynamic in Embed Frameworks */,
 				E9C386552C0EE00E001D0902 /* SharedModule.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -97,7 +115,20 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				E9C3867C2C0EEA63001D0902 /* RxRelay-Dynamic in Embed Frameworks */,
 				E9C3865A2C0EE014001D0902 /* SharedModule.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E9C386672C0EE361001D0902 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E9C3866E2C0EE4E2001D0902 /* RxRelay-Dynamic in Embed Frameworks */,
+				E9C386662C0EE361001D0902 /* RxSwift-Dynamic in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -119,6 +150,9 @@
 		E9C3863A2C0EDFE1001D0902 /* FeatureAModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeatureAModule.h; sourceTree = "<group>"; };
 		E9C386482C0EDFE9001D0902 /* FeatureBModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeatureBModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9C3864A2C0EDFE9001D0902 /* FeatureBModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeatureBModule.h; sourceTree = "<group>"; };
+		E9C386682C0EE371001D0902 /* RxUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxUtilities.swift; sourceTree = "<group>"; };
+		E9C3866A2C0EE442001D0902 /* FeatureAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureAViewController.swift; sourceTree = "<group>"; };
+		E9C3866F2C0EE534001D0902 /* FeatureBViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureBViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +160,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9C3867E2C0EEA6C001D0902 /* RxRelay-Dynamic in Frameworks */,
+				E9C386812C0EEA6F001D0902 /* RxSwift-Dynamic in Frameworks */,
 				E9C3862D2C0EDFD1001D0902 /* SharedModule.framework in Frameworks */,
 				E9C3864E2C0EDFE9001D0902 /* FeatureBModule.framework in Frameworks */,
 				E9C3863E2C0EDFE1001D0902 /* FeatureAModule.framework in Frameworks */,
@@ -136,6 +172,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9C3866D2C0EE4E2001D0902 /* RxRelay-Dynamic in Frameworks */,
+				E9C386652C0EE361001D0902 /* RxSwift-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +181,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9C386782C0EEA5D001D0902 /* RxSwift-Dynamic in Frameworks */,
 				E9C386542C0EE00E001D0902 /* SharedModule.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -151,6 +190,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9C3867B2C0EEA63001D0902 /* RxRelay-Dynamic in Frameworks */,
 				E9C386592C0EE014001D0902 /* SharedModule.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -199,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				E9C386292C0EDFD1001D0902 /* SharedModule.h */,
+				E9C386682C0EE371001D0902 /* RxUtilities.swift */,
 			);
 			path = SharedModule;
 			sourceTree = "<group>";
@@ -207,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				E9C3863A2C0EDFE1001D0902 /* FeatureAModule.h */,
+				E9C3866A2C0EE442001D0902 /* FeatureAViewController.swift */,
 			);
 			path = FeatureAModule;
 			sourceTree = "<group>";
@@ -215,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				E9C3864A2C0EDFE9001D0902 /* FeatureBModule.h */,
+				E9C3866F2C0EE534001D0902 /* FeatureBViewController.swift */,
 			);
 			path = FeatureBModule;
 			sourceTree = "<group>";
@@ -273,6 +316,10 @@
 				E9C3864D2C0EDFE9001D0902 /* PBXTargetDependency */,
 			);
 			name = UIKitPlayground;
+			packageProductDependencies = (
+				E9C3867D2C0EEA6C001D0902 /* RxRelay-Dynamic */,
+				E9C386802C0EEA6F001D0902 /* RxSwift-Dynamic */,
+			);
 			productName = UIKitPlayground;
 			productReference = E927B36E2BCAC99E006545A0 /* UIKitPlayground.app */;
 			productType = "com.apple.product-type.application";
@@ -285,12 +332,17 @@
 				E9C386232C0EDFD1001D0902 /* Sources */,
 				E9C386242C0EDFD1001D0902 /* Frameworks */,
 				E9C386252C0EDFD1001D0902 /* Resources */,
+				E9C386672C0EE361001D0902 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = SharedModule;
+			packageProductDependencies = (
+				E9C386642C0EE361001D0902 /* RxSwift-Dynamic */,
+				E9C3866C2C0EE4E2001D0902 /* RxRelay-Dynamic */,
+			);
 			productName = SharedModule;
 			productReference = E9C386272C0EDFD1001D0902 /* SharedModule.framework */;
 			productType = "com.apple.product-type.framework";
@@ -311,6 +363,9 @@
 				E9C386572C0EE00E001D0902 /* PBXTargetDependency */,
 			);
 			name = FeatureAModule;
+			packageProductDependencies = (
+				E9C386772C0EEA5D001D0902 /* RxSwift-Dynamic */,
+			);
 			productName = FeatureAModule;
 			productReference = E9C386382C0EDFE1001D0902 /* FeatureAModule.framework */;
 			productType = "com.apple.product-type.framework";
@@ -331,6 +386,9 @@
 				E9C3865C2C0EE014001D0902 /* PBXTargetDependency */,
 			);
 			name = FeatureBModule;
+			packageProductDependencies = (
+				E9C3867A2C0EEA63001D0902 /* RxRelay-Dynamic */,
+			);
 			productName = FeatureBModule;
 			productReference = E9C386482C0EDFE9001D0902 /* FeatureBModule.framework */;
 			productType = "com.apple.product-type.framework";
@@ -350,12 +408,15 @@
 					};
 					E9C386262C0EDFD1001D0902 = {
 						CreatedOnToolsVersion = 15.4;
+						LastSwiftMigration = 1540;
 					};
 					E9C386372C0EDFE1001D0902 = {
 						CreatedOnToolsVersion = 15.4;
+						LastSwiftMigration = 1540;
 					};
 					E9C386472C0EDFE9001D0902 = {
 						CreatedOnToolsVersion = 15.4;
+						LastSwiftMigration = 1540;
 					};
 				};
 			};
@@ -432,6 +493,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9C386692C0EE371001D0902 /* RxUtilities.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,6 +501,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9C3866B2C0EE442001D0902 /* FeatureAViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,6 +509,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9C386702C0EE534001D0902 /* FeatureBViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -621,6 +685,7 @@
 		E927B3832BCAC99F006545A0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -648,6 +713,7 @@
 		E927B3842BCAC99F006545A0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -676,6 +742,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -699,6 +766,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -710,6 +778,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -744,6 +813,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -767,6 +837,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -778,6 +849,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -812,6 +884,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -835,6 +908,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -846,6 +920,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -936,6 +1011,39 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E9C386642C0EE361001D0902 /* RxSwift-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E9C386632C0EE32C001D0902 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxSwift-Dynamic";
+		};
+		E9C3866C2C0EE4E2001D0902 /* RxRelay-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E9C386632C0EE32C001D0902 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxRelay-Dynamic";
+		};
+		E9C386772C0EEA5D001D0902 /* RxSwift-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E9C386632C0EE32C001D0902 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxSwift-Dynamic";
+		};
+		E9C3867A2C0EEA63001D0902 /* RxRelay-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E9C386632C0EE32C001D0902 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxRelay-Dynamic";
+		};
+		E9C3867D2C0EEA6C001D0902 /* RxRelay-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E9C386632C0EE32C001D0902 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxRelay-Dynamic";
+		};
+		E9C386802C0EEA6F001D0902 /* RxSwift-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E9C386632C0EE32C001D0902 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxSwift-Dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E927B3662BCAC99E006545A0 /* Project object */;
 }
